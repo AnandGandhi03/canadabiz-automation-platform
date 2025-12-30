@@ -5,37 +5,28 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15+-blue.svg)](https://www.postgresql.org/)
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/AnandGandhi03/canadabiz-automation-platform)
 
 > Transform your Canadian small business with intelligent automation and AI-powered optimizations. Save 20+ hours per week and boost efficiency by 340%.
 
-## 🚀 Quick Start
+---
 
-### Option 1: One-Click Deploy (Recommended)
+## 🚀 Quick Deploy
+
+### Railway (Recommended - 2 Minutes)
 
 [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/AnandGandhi03/canadabiz-automation-platform)
 
-### Option 2: Local Development
+**Step-by-step guide:** [RAILWAY_DEPLOYMENT.md](RAILWAY_DEPLOYMENT.md) | [Quick Start](RAILWAY_QUICKSTART.md)
 
-```bash
-# Clone repository
-git clone https://github.com/AnandGandhi03/canadabiz-automation-platform.git
-cd canadabiz-automation-platform
+### Other Options
 
-# Install dependencies
-npm install
+- **Docker:** `docker-compose up`
+- **Vercel + Supabase:** See [DEPLOYMENT.md](DEPLOYMENT.md)
+- **Heroku:** See [DEPLOYMENT.md](DEPLOYMENT.md)
+- **Local:** See [QUICKSTART.md](QUICKSTART.md)
 
-# Set up environment variables
-cp .env.example .env
-# Edit .env with your configuration
-
-# Start with Docker (includes PostgreSQL)
-docker-compose up
-
-# OR start manually
-npm start
-```
-
-Visit `http://localhost:3000` 🎉
+---
 
 ## ✨ Features
 
@@ -69,11 +60,22 @@ Visit `http://localhost:3000` 🎉
 - SQL injection protection
 - CORS protection
 
+---
+
 ## 📖 Documentation
 
-- **[API Documentation](API.md)** - Complete API reference
-- **[Deployment Guide](DEPLOYMENT.md)** - Deploy to Railway, Vercel, Heroku, etc.
-- **[Feature List](FEATURES.md)** - All 100+ features documented
+| Document | Description |
+|----------|-------------|
+| **[RAILWAY_DEPLOYMENT.md](RAILWAY_DEPLOYMENT.md)** | Complete Railway deployment guide |
+| **[RAILWAY_QUICKSTART.md](RAILWAY_QUICKSTART.md)** | 2-minute Railway quick start |
+| **[QUICKSTART.md](QUICKSTART.md)** | 5-minute general quick start |
+| **[API.md](API.md)** | Complete API reference |
+| **[DEPLOYMENT.md](DEPLOYMENT.md)** | All deployment options |
+| **[FEATURES.md](FEATURES.md)** | All 100+ features |
+| **[ENV_SETUP.md](ENV_SETUP.md)** | Environment variables guide |
+| **[ENVIRONMENT_VARIABLES.md](ENVIRONMENT_VARIABLES.md)** | Quick env reference |
+
+---
 
 ## 🏗️ Tech Stack
 
@@ -85,44 +87,49 @@ Visit `http://localhost:3000` 🎉
 - **Email:** Nodemailer
 - **Security:** Helmet, Rate Limiting, CORS
 
-## 📁 Project Structure
+---
 
+## 🚀 Local Development
+
+```bash
+# Clone repository
+git clone https://github.com/AnandGandhi03/canadabiz-automation-platform.git
+cd canadabiz-automation-platform
+
+# Install dependencies
+npm install
+
+# Configure environment
+cp .env.example .env
+# Edit .env with your settings
+
+# Start with Docker (includes PostgreSQL)
+docker-compose up
+
+# OR start manually
+npm start
+
+# Visit http://localhost:3000
 ```
-canadabiz-automation-platform/
-├── config/           # Database configuration
-├── database/         # SQL schema
-├── middleware/       # Auth, validation
-├── routes/           # API endpoints
-├── services/         # Business logic
-│   ├── aiService.js       # AI recommendations
-│   ├── emailService.js    # Email handling
-│   └── workflowEngine.js  # Automation engine
-├── public/           # Frontend dashboard
-├── server.js         # Main application
-└── package.json      # Dependencies
-```
+
+---
 
 ## 🔧 Environment Variables
 
+**Minimal setup (2 variables):**
 ```env
-# Database
-DATABASE_URL=postgresql://user:password@host:5432/dbname
-
-# Authentication
-JWT_SECRET=your-super-secret-key
-
-# AI (Optional - has fallbacks)
-OPENAI_API_KEY=sk-your-key
-
-# Email (Optional)
-SMTP_HOST=smtp.gmail.com
-SMTP_USER=your-email@gmail.com
-SMTP_PASS=your-app-password
-
-# Server
-PORT=3000
-NODE_ENV=production
+DATABASE_URL=postgresql://user:password@host:5432/database
+JWT_SECRET=your-random-secret-key
 ```
+
+**Generate JWT Secret:**
+```bash
+node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+```
+
+**Full configuration:** See [ENV_SETUP.md](ENV_SETUP.md)
+
+---
 
 ## 🌐 API Endpoints
 
@@ -142,6 +149,10 @@ NODE_ENV=production
 - `POST /api/ai/analyze` - Analyze business metrics
 - `GET /api/ai/optimizations/:businessId` - Get optimization history
 
+**Full API docs:** [API.md](API.md)
+
+---
+
 ## 📅 Cron Schedule Examples
 
 ```javascript
@@ -152,44 +163,23 @@ NODE_ENV=production
 '*/30 * * * *'   // Every 30 minutes
 ```
 
-## 🚢 Deployment
-
-### Railway (Easiest)
-1. Click "Deploy on Railway" button above
-2. Add environment variables
-3. Deploy! ✅
-
-### Vercel + Supabase
-```bash
-vercel --prod
-```
-
-### Heroku
-```bash
-heroku create canadabiz-automation
-git push heroku main
-```
-
-### Docker
-```bash
-docker-compose up -d
-```
-
-See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed instructions.
+---
 
 ## 💰 Cost Estimates
 
-**Free Tier (Perfect for starting):**
+### Free Tier (Perfect for starting)
 - Railway: $0 (500 hours free)
 - Supabase: $0 (500MB database)
 - Vercel: $0 (hobby tier)
 - **Total: $0/month** ✅
 
-**Production:**
+### Production
 - Railway Pro: $5-20
 - Supabase Pro: $25
 - Vercel Pro: $20
 - **Total: $50-65/month**
+
+---
 
 ## 🇨🇦 Canadian Business Focus
 
@@ -199,6 +189,65 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed instructions.
 - ✅ Canadian timezone handling (EST/PST)
 - ✅ Local business regulations compliance
 - ✅ Province-specific features
+
+---
+
+## 📁 Project Structure
+
+```
+canadabiz-automation-platform/
+├── config/              # Database configuration
+├── database/            # SQL schema
+├── middleware/          # Auth, validation
+├── routes/              # API endpoints
+│   ├── auth.js         # Authentication routes
+│   ├── workflows.js    # Workflow management
+│   └── ai.js           # AI optimization routes
+├── services/            # Business logic
+│   ├── aiService.js    # AI recommendations
+│   ├── emailService.js # Email handling
+│   └── workflowEngine.js # Automation engine
+├── public/              # Frontend dashboard
+├── server.js            # Main application
+└── package.json         # Dependencies
+```
+
+---
+
+## 🧪 Testing Your Installation
+
+### Health Check
+```bash
+curl http://localhost:3000/api/health
+```
+
+### Register User
+```bash
+curl -X POST http://localhost:3000/api/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "test@example.com",
+    "password": "SecurePass123!",
+    "fullName": "Test User",
+    "companyName": "Test Company",
+    "province": "Ontario"
+  }'
+```
+
+### Create Workflow
+```bash
+curl -X POST http://localhost:3000/api/workflows \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "businessId": "your-business-id",
+    "name": "Daily Sales Report",
+    "type": "reporting",
+    "schedule": "0 9 * * *"
+  }'
+```
+
+---
 
 ## 🤝 Contributing
 
@@ -218,9 +267,13 @@ git push origin feature/AmazingFeature
 # Open a Pull Request
 ```
 
+---
+
 ## 📝 License
 
 MIT License - see [LICENSE](LICENSE) file for details
+
+---
 
 ## 🙏 Acknowledgments
 
@@ -228,11 +281,16 @@ MIT License - see [LICENSE](LICENSE) file for details
 - Powered by OpenAI
 - Inspired by the need for accessible automation
 
+---
+
 ## 📞 Support
 
 - **Documentation:** [Full Docs](API.md)
+- **Railway Guide:** [RAILWAY_DEPLOYMENT.md](RAILWAY_DEPLOYMENT.md)
 - **Issues:** [GitHub Issues](https://github.com/AnandGandhi03/canadabiz-automation-platform/issues)
 - **Email:** support@canadabiz.io
+
+---
 
 ## 🎯 Roadmap
 
@@ -242,12 +300,15 @@ MIT License - see [LICENSE](LICENSE) file for details
 - [x] Database integration
 - [x] Email service
 - [x] Production deployment
+- [x] Railway deployment guide
 - [ ] Webhook support
 - [ ] Mobile app (React Native)
 - [ ] Advanced analytics
 - [ ] Team collaboration
 - [ ] Integrations marketplace
 - [ ] API SDKs (Python, Ruby, PHP)
+
+---
 
 ## ⭐ Star History
 
@@ -257,4 +318,4 @@ If this project helps your business, please give it a star! ⭐
 
 **Made with ❤️ for Canadian Small Businesses**
 
-🍁 **Start automating today!** → [Deploy Now](https://railway.app/new/template?template=https://github.com/AnandGandhi03/canadabiz-automation-platform)
+🍁 **Start automating today!** → [Deploy on Railway](https://railway.app/new/template?template=https://github.com/AnandGandhi03/canadabiz-automation-platform)
